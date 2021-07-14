@@ -1,18 +1,26 @@
 'use strict';
 const guessNumber = document.querySelector('.number');
 const score = document.querySelector('.score');
-const inputNumber = document.querySelector('.guess');
-const numToGuess = Math.floor(Math.random() * 20);
-guessNumber.textContent = '34';
+let inputNumber = Number(document.querySelector('.guess').value);
+const numToGuess = Math.trunc(Math.random() * 20) + 1;
+const message = document.querySelector('.message');
 score.textContent = '150'
-const btnCheck = document.querySelector('.btn.check')
+const btnCheck = document.querySelector('.check');
+
 btnCheck.addEventListener('click', () => {
-  console.log(inputNumber.value)
+  
+  if(!inputNumber) {
+     message.textContent = 'there is no number 😴😛';
+     document.querySelector('.guess').value = '';
+  }else if ( inputNumber === numToGuess) {
+    message.textContent = 'Correct number 👌🏽'
+    document.querySelector('.guess').value = '';
+  }else if (inputNumber > numToGuess) {
+    message.textContent = 'number is higher than number to guess ☝🏽'
+    document.querySelector('.guess').value = '';
+  }else if (inputNumber < numToGuess) {
+    message.textContent = 'number is lower than number to guess 👇🏽'
+    document.querySelector('.guess').value = '';
+  }
 });
 
-document.addEventListener('keypress',(e) => {
-  if (e.key === 'Enter'){
-     console.log(inputNumber.value);
-  console.log(numToGuess)
-  }
-}) 
