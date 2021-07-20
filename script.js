@@ -1,26 +1,24 @@
 'use strict';
+'use strict';
 const guessNumber = document.querySelector('.number');
 const score = document.querySelector('.score');
-let inputNumber = Number(document.querySelector('.guess').value);
-const numToGuess = Math.trunc(Math.random() * 20) + 1;
-const message = document.querySelector('.message');
-score.textContent = '150'
+const inputNumber = document.querySelector('.guess');
+const numToGuess = Math.floor(Math.random() * 20);
 const btnCheck = document.querySelector('.check');
+const message = document.querySelector('.message');
 
+console.log(numToGuess)
 btnCheck.addEventListener('click', () => {
-  
-  if(!inputNumber) {
-     message.textContent = 'there is no number 😴😛';
-     document.querySelector('.guess').value = '';
-  }else if ( inputNumber === numToGuess) {
-    message.textContent = 'Correct number 👌🏽'
-    document.querySelector('.guess').value = '';
-  }else if (inputNumber > numToGuess) {
-    message.textContent = 'number is higher than number to guess ☝🏽'
-    document.querySelector('.guess').value = '';
-  }else if (inputNumber < numToGuess) {
-    message.textContent = 'number is lower than number to guess 👇🏽'
-    document.querySelector('.guess').value = '';
+  if(Number(inputNumber.value) === 0) {
+    message.textContent = 'No, Number!';
+  }else if(Number(inputNumber.value) === numToGuess){
+    message.textContent = 'Correct 🙌🏽🎉🍾🎊';
+  }else if(Number(inputNumber.value) < numToGuess){
+    message.textContent = 'Too low 👇🏽';
+  }else if(Number(inputNumber.value) > numToGuess){
+    message.textContent = 'Too high 👆🏽';
   }
+  console.log(Number(inputNumber.value))
 });
+
 
